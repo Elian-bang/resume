@@ -45,7 +45,7 @@ const profile: ProfilePayload = {
   headings: [
     // 2023.02 입사 기준
     { value: '3+', label: 'Years of experience' },
-    // 일 평균 1만 건 · 월 30만 건 이상 (수치검증.md)
+    // 일 평균 1만 건 · 월 30만 건 이상
     { value: '10K', label: 'Notifications / day' },
     // notification-reliability-lab · virtual-thread-lab · backend-guardrails
     { value: '3', label: 'Verification labs' },
