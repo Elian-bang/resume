@@ -13,7 +13,7 @@ const openSource: OpenSourcePayload = {
       ],
     },
     {
-      title: '제한된 자원에서 Virtual Thread 성능 비교',
+      title: 'Virtual Thread 적용 조건 측정',
       descriptions: [
         { content: '알림 서버의 동시성 처리 방식을 검토하기 위해 플랫폼 스레드와 Virtual Thread를 비교한 개인 실험 프로젝트' },
         { content: 'DB 접근 여부와 동시 실행 수를 바꾸어 가며 처리량과 스레드 사용량을 측정하고, 가상 스레드가 유효한 조건과 그렇지 않은 조건을 구분' },
