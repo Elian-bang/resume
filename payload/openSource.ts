@@ -16,7 +16,7 @@ const openSource: OpenSourcePayload = {
       title: '제한된 자원에서 Virtual Thread 성능 비교',
       descriptions: [
         { content: '알림 서버의 동시성 처리 방식을 검토하기 위해 플랫폼 스레드와 Virtual Thread를 비교한 개인 실험 프로젝트' },
-        { content: 'Java 21·1 core·1GB 환경에서 DB 접근 여부와 동시 실행 수 등을 바꾸며 처리량과 스레드 사용을 측정' },
+        { content: 'DB 접근 여부와 동시 실행 수를 바꾸어 가며 처리량과 스레드 사용량을 측정하고, 가상 스레드가 유효한 조건과 그렇지 않은 조건을 구분' },
         { content: 'virtual-thread-lab · GitHub', href: 'https://github.com/Elian-bang/virtual-thread-lab' },
       ],
     },
