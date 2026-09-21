@@ -35,10 +35,12 @@ function ProfileContent({ payload }: { payload: Payload }) {
         </div>
       </div>
 
-      <div className="notice-banner">
-        {notice.icon && <FontAwesomeIcon icon={notice.icon} className="notice-icon" />}
-        {notice.title}
-      </div>
+      {notice && (
+        <div className="notice-banner">
+          {notice.icon && <FontAwesomeIcon icon={notice.icon} className="notice-icon" />}
+          {notice.title}
+        </div>
+      )}
 
       {/* Evidence Group */}
       {headings && headings.length > 0 && (

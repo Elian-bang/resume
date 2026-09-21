@@ -24,8 +24,8 @@ export interface ProfilePayload extends CommonPayload {
   };
   /** ### 연락 수단 목록 */
   contact: ProfileContact[];
-  /** ### 공지 */
-  notice: {
+  /** ### 공지 (없으면 배너를 그리지 않는다) */
+  notice?: {
     /** ### 공지 내용 */
     title: string;
     /**

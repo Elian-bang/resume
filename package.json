@@ -13,7 +13,9 @@
     "clean": "npx rimraf docs .next",
     "lint": "eslint \"component/**/*\" \"pages/**/*\" \"payload/**/*\" \"types/**/*\"",
     "lint:fix": "npm run lint -- --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:public": "cross-env NEXT_PUBLIC_RESUME_PHONE= next build && node shellwork.js && node scripts/check-public-build.js",
+    "build:pdf": "next build"
   },
   "homepage": "https://elian-bang.github.io/resume",
   "repository": {

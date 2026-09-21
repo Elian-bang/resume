@@ -71,6 +71,8 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+# 로컬 전용 값(연락처 등) — 절대 커밋하지 않는다
+.env*.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

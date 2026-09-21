@@ -10,7 +10,7 @@ const project: ProjectPayload = {
       startedAt: '2025',
       where: `${WHERE} · 서버 분리 제안·구현 / 채널 확장 설계·구현 주도`,
       descriptions: [
-        { content: '대량 발송이 메인 서버에 주는 부하와 서비스별로 중복된 발송 흐름을 개선하고, 일 평균 1만 건의 알림 발송 시스템을 개발·운영' },
+        { content: '대량 발송이 메인 서버에 주는 부하와 서비스별로 중복된 발송 흐름을 구조적으로 분리하고, 채널 확장이 가능한 발송 시스템으로 재설계' },
         {
           content: '2025 · 알림 서버 분리',
           weight: 'MEDIUM',
