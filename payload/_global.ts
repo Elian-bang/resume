@@ -3,7 +3,7 @@ import { GlobalPayload } from '../types/global';
 const favicon = '/favicon.ico';
 
 const title = 'Resume: 방성민';
-const description = '백엔드 개발자 방성민의 이력서 — 의료 IT 플랫폼의 알림·통계·홈페이지·CRM 도메인';
+const description = '백엔드 개발자 방성민의 이력서 — 알림 서비스 설계, 통계 서비스 개발, 성능 개선과 안정적인 운영';
 
 export const _global: GlobalPayload = {
   favicon,
@@ -31,8 +31,6 @@ export const _global: GlobalPayload = {
     'skill',
     'education',
     'etc',
-    'presentation',
-    'article',
   ],
   jsonLd: {
     name: '방성민',

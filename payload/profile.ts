@@ -1,4 +1,4 @@
-import { faEnvelope, faPen, faPhone, faRss } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPen, faRss } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 
@@ -20,11 +20,6 @@ const profile: ProfilePayload = {
       icon: faEnvelope,
     },
     {
-      title: 'Please contact me by email',
-      icon: faPhone,
-      badge: true,
-    },
-    {
       link: 'https://github.com/Elian-bang',
       icon: faGithub,
     },
@@ -41,15 +36,7 @@ const profile: ProfilePayload = {
     title: '휴대전화 대신 이메일로 연락 부탁드립니다.',
     icon: faBell,
   },
-  tagline: '의료 IT 플랫폼의 비용·성능·안정성 문제를 구조로 해결하는 백엔드 개발자',
-  headings: [
-    // 2023.02 입사 기준
-    { value: '3+', label: 'Years of experience' },
-    // 일 평균 1만 건 · 월 30만 건 이상
-    { value: '10K', label: 'Notifications / day' },
-    // notification-reliability-lab · virtual-thread-lab · backend-guardrails
-    { value: '3', label: 'Verification labs' },
-  ],
+  tagline: '서비스 개발부터 성능 개선과 안정적인 운영까지 담당하는 백엔드 개발자',
 };
 
 export default profile;

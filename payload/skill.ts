@@ -1,44 +1,42 @@
-import { SkillPayload, SkillItem } from '../types/skill';
-
-const backend: SkillItem = {
-  category: 'Backend',
-  items: [
-    { title: 'Java 21' },
-    { title: 'Spring Boot' },
-    { title: 'Spring MVC' },
-    { title: 'Spring Data JPA' },
-    { title: 'QueryDSL' },
-    { title: 'Spring Batch' },
-    { title: 'MyBatis' },
-    { title: 'Virtual Thread' },
-    { title: 'CompletableFuture' },
-  ],
-};
-
-const dataMessaging: SkillItem = {
-  category: 'Database & Messaging',
-  items: [{ title: 'MySQL' }, { title: 'RabbitMQ' }, { title: 'GA4' }],
-};
-
-const observability: SkillItem = {
-  category: 'Observability & Verification',
-  items: [
-    { title: 'Spring Actuator' },
-    { title: 'AOP Memory Monitoring' },
-    { title: 'ArchUnit' },
-    { title: 'Docker' },
-    { title: 'GitHub Actions' },
-  ],
-};
-
-const frontend: SkillItem = {
-  category: 'Frontend',
-  items: [{ title: 'Vue.js (2·3)' }, { title: 'TypeScript' }, { title: 'Fabric.js' }],
-};
+import { SkillPayload } from '../types/skill';
 
 const skill: SkillPayload = {
   disable: false,
-  skills: [backend, dataMessaging, observability, frontend],
+  skills: [
+    {
+      category: 'Languages',
+      items: [{ title: 'Java' }, { title: 'TypeScript' }],
+    },
+    {
+      category: 'Backend',
+      items: [
+        { title: 'Spring Boot' },
+        { title: 'Spring MVC' },
+        { title: 'Spring Data JPA' },
+        { title: 'QueryDSL' },
+        { title: 'MyBatis' },
+        { title: 'Spring Batch' },
+      ],
+    },
+    {
+      category: 'Frontend',
+      items: [{ title: 'Vue.js 2·3' }, { title: 'Fabric.js' }],
+    },
+    {
+      category: 'Database & Messaging',
+      items: [{ title: 'MySQL' }, { title: 'RabbitMQ' }],
+    },
+    {
+      category: 'Development & Testing',
+      items: [
+        { title: 'Git' },
+        { title: 'Docker' },
+        { title: 'GitHub Actions' },
+        { title: 'Spring Boot Actuator' },
+        { title: 'ArchUnit (개인 프로젝트)' },
+      ],
+    },
+  ],
 };
 
 export default skill;

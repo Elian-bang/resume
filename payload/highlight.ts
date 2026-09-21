@@ -4,22 +4,22 @@ const highlight: HighlightPayload = {
   disable: false,
   list: [
     {
-      title: 'Structure over Patches',
+      title: 'Service Ownership',
       description:
-        '채널 확장 포인트, 셀프서비스 전환처럼 반복되는 수정과 요청을 구조로 없애 왔습니다',
-      keywords: ['Extensibility', 'MSA', 'Self-service'],
+        '알림·CRM·통계 서비스의 요구사항을 구체화하고, 설계와 구현부터 운영 개선까지 담당해 왔습니다.',
+      keywords: ['Backend', 'System Design', 'Operations'],
     },
     {
-      title: 'Root Cause to Prevention',
+      title: 'Engineering Depth',
       description:
-        '락 경합의 원인을 커밋 시점까지 좁히고, 적용률을 알람 지표로 바꿔 재발을 막았습니다',
-      keywords: ['Transaction', 'Index', 'Observability'],
+        '조회 성능과 트랜잭션 문제를 분석하고, 재현과 비교 실험을 통해 기술 선택의 이유와 한계를 탐구합니다.',
+      keywords: ['Performance', 'Transaction', 'Experimentation'],
     },
     {
-      title: 'Measured Decisions',
+      title: 'Business Collaboration',
       description:
-        '운영에서 내린 판단을 통제된 환경에서 다시 재서 확인하고, 그 기록을 공개 저장소로 남깁니다',
-      keywords: ['Reproduction', 'Benchmark', 'CI Guardrail'],
+        '기획·사업·CS팀과 업무 흐름을 살피며, 반복 요청을 줄이는 편집 기능과 운영 판단을 돕는 통계 서비스를 개발했습니다.',
+      keywords: ['Collaboration', 'Self-service', 'Business Context'],
     },
   ],
 };
