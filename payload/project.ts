@@ -24,7 +24,7 @@ const project: ProjectPayload = {
           weight: 'MEDIUM',
           descriptions: [
             { content: '채널별 발송 구현을 공통 인터페이스로 분리하고, 알림톡 우선 발송 및 실패 시 SMS 전환 정책 구현' },
-            { content: '검증 당시 전체 발송의 약 2%인 전환 구간에서 건당 단가가 SMS 대비 약 70% 낮음을 확인' },
+            { content: '알림톡 우선 발송으로 전환되는 구간에서 건당 단가가 SMS 대비 약 70% 낮음을 확인' },
           ],
         },
         {
