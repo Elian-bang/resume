@@ -1,6 +1,5 @@
 import { faEnvelope, faPen, faPhone, faRss } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faBell } from '@fortawesome/free-regular-svg-icons';
 
 import { ProfilePayload, ProfileContact } from '../types/profile';
 
@@ -16,9 +15,8 @@ const phoneContact: ProfileContact[] = phone
   ? [{ title: phone, link: `tel:${phone.replace(/[^0-9+]/g, '')}`, icon: faPhone }]
   : [];
 
-const emailNotice = phone
-  ? undefined
-  : { title: '휴대전화 대신 이메일로 연락 부탁드립니다.', icon: faBell };
+// 공개본에는 공지 박스를 두지 않는다. 연락 수단은 위 목록으로 충분하다.
+const emailNotice = undefined;
 
 const profile: ProfilePayload = {
   disable: false,
@@ -37,14 +35,17 @@ const profile: ProfilePayload = {
       icon: faEnvelope,
     },
     {
+      title: 'GitHub',
       link: 'https://github.com/Elian-bang',
       icon: faGithub,
     },
     {
+      title: 'Blog',
       link: 'https://to-be-a-artist.tistory.com',
       icon: faRss,
     },
     {
+      title: 'TIL',
       link: 'https://github.com/Elian-bang/TIL',
       icon: faPen,
     },

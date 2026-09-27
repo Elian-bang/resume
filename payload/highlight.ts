@@ -4,22 +4,22 @@ const highlight: HighlightPayload = {
   disable: false,
   list: [
     {
-      title: 'Service Ownership',
+      title: '조회 5~6초 → 300~400ms',
       description:
-        '알림·CRM·통계 서비스의 요구사항을 구체화하고, 설계와 구현부터 운영 개선까지 담당해 왔습니다.',
-      keywords: ['Backend', 'System Design', 'Operations'],
+        '리마인드 알림 조회가 날짜 계산 조건 때문에 풀 스캔을 타는 것을 EXPLAIN ANALYZE 로 확인하고, 범위 조건 전환과 복합 인덱스 재설계로 해결했습니다.',
+      keywords: ['MySQL', 'Index'],
     },
     {
-      title: 'Engineering Depth',
+      title: '락 경합 timeout 주 2~3회 → 0건',
       description:
-        '조회 성능과 트랜잭션 문제를 분석하고, 재현과 비교 실험을 통해 기술 선택의 이유와 한계를 탐구합니다.',
-      keywords: ['Performance', 'Transaction', 'Experimentation'],
+        '반복되던 lock wait timeout 의 원인을 트랜잭션 길이가 아니라 완료 표시의 커밋 시점으로 좁히고, 해당 갱신을 건별 커밋으로 분리했습니다.',
+      keywords: ['Transaction', 'Troubleshooting'],
     },
     {
-      title: 'Business Collaboration',
+      title: 'CS 요청 주 10건 → 2~3건',
       description:
-        '기획·사업·CS팀과 업무 흐름을 살피며, 반복 요청을 줄이는 편집 기능과 운영 판단을 돕는 통계 서비스를 개발했습니다.',
-      keywords: ['Collaboration', 'Self-service', 'Business Context'],
+        '이미지 제작을 CS팀이 대신하던 흐름을, 템플릿 데이터 구조를 설계해 병원이 직접 편집하는 방식으로 바꿨습니다.',
+      keywords: ['API Design', 'Self-service'],
     },
   ],
 };

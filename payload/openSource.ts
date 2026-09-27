@@ -7,25 +7,17 @@ const openSource: OpenSourcePayload = {
     {
       title: '알림 발송 환경의 트랜잭션·락 경합 재현',
       descriptions: [
-        { content: '운영에서 경험한 락 경합의 발생 조건과 개선안별 차이를 확인하기 위한 개인 실험 프로젝트' },
-        { content: 'Java·Spring Batch·MySQL 기반 재현 환경에서 트랜잭션 경계와 갱신 방식을 바꾸어 비교하는 실험 구성' },
+        { content: '운영에서 겪은 락 경합을 재현해, 트랜잭션 경계와 갱신 방식을 바꾸어 가며 처방별 차이를 비교한 개인 실험' },
+        { content: '알게 된 것 — 락을 잡는 문장의 커밋 시점이 문제였고, 처방 비교는 설계가 부족해 하나만 효과를 확인할 수 있었다. 무엇을 판정할 수 없는지까지 저장소에 적었다' },
         { content: 'notification-reliability-lab · GitHub', href: 'https://github.com/Elian-bang/notification-reliability-lab' },
       ],
     },
     {
       title: 'Virtual Thread 적용 조건 측정',
       descriptions: [
-        { content: '알림 서버의 동시성 처리 방식을 검토하기 위해 플랫폼 스레드와 Virtual Thread를 비교한 개인 실험 프로젝트' },
-        { content: 'DB 접근 여부와 동시 실행 수를 바꾸어 가며 처리량과 스레드 사용량을 측정하고, 가상 스레드가 유효한 조건과 그렇지 않은 조건을 구분' },
+        { content: '플랫폼 스레드와 가상 스레드를 조건 26개 × 3회로 비교하고, 원인을 확인하기 위해 JDK 와 JDBC 드라이버를 바꿔 가며 235회를 다시 측정' },
+        { content: '알게 된 것 — DB 를 거치지 않는 경로에서는 유리하지만 거치는 경로에서는 뒤집힌다. 원인은 드라이버 안의 pinning 이었고, 가설 4개 중 2개는 반증됐다' },
         { content: 'virtual-thread-lab · GitHub', href: 'https://github.com/Elian-bang/virtual-thread-lab' },
-      ],
-    },
-    {
-      title: '트랜잭션 규칙 자동 검증',
-      descriptions: [
-        { content: '트랜잭션 관련 개발 규칙 중 자동으로 검사할 수 있는 범위를 살펴보는 개인 프로젝트' },
-        { content: 'ArchUnit 규칙과 위반·정상 사례를 구성하고, 규칙 자체를 검사하는 테스트 작성' },
-        { content: 'backend-guardrails · GitHub', href: 'https://github.com/Elian-bang/backend-guardrails' },
       ],
     },
   ],
