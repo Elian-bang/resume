@@ -5,7 +5,7 @@ const skill: SkillPayload = {
   skills: [
     {
       category: 'Language',
-      items: [{ title: 'Java' }],
+      items: [{ title: 'Java' }, { title: 'TypeScript' }],
     },
     {
       category: 'Backend',
@@ -32,8 +32,8 @@ const skill: SkillPayload = {
       ],
     },
     {
-      category: 'Etc',
-      items: [{ title: 'TypeScript' }, { title: 'Vue.js 2·3' }],
+      category: 'Frontend',
+      items: [{ title: 'Vue.js 2·3' }, { title: 'TypeScript' }, { title: 'Fabric.js' }],
     },
   ],
 };

@@ -4,22 +4,22 @@ const highlight: HighlightPayload = {
   disable: false,
   list: [
     {
-      title: '조회 5~6초 → 300~400ms',
+      title: '알림 서버 분리와 채널 확장',
       description:
-        '리마인드 알림 조회가 날짜 계산 조건 때문에 풀 스캔을 타는 것을 EXPLAIN ANALYZE 로 확인하고, 범위 조건 전환과 복합 인덱스 재설계로 해결했습니다.',
-      keywords: ['MySQL', 'Index'],
+        '메인 서버에 붙어 있던 발송을 RabbitMQ 기반 별도 서비스로 분리하자고 제안하고 전환했습니다. 새 채널은 서비스 코드를 고치지 않고 확장 포인트만 추가하면 되는 구조로 정립했고, 알림톡으로 전환되는 구간에서 건당 단가가 SMS 대비 약 70% 낮음을 확인했습니다.',
+      keywords: ['RabbitMQ', 'MSA', 'System Design'],
     },
     {
-      title: '락 경합 timeout 주 2~3회 → 0건',
+      title: '진료 통계 KPI 서비스 0 → 1',
       description:
-        '반복되던 lock wait timeout 의 원인을 트랜잭션 길이가 아니라 완료 표시의 커밋 시점으로 좁히고, 해당 갱신을 건별 커밋으로 분리했습니다.',
-      keywords: ['Transaction', 'Troubleshooting'],
+        '수기로 관리하던 진료 성과 지표를 서비스로 만들었습니다. 기획을 제안하고 사업팀과 지표를 정의한 뒤 집계 구조와 파이프라인을 설계·구현했습니다. 부하시험에서 일별 집계 실패율 86% → 0%.',
+      keywords: ['Data Pipeline', 'Batch', 'Product'],
     },
     {
-      title: 'CS 요청 주 10건 → 2~3건',
+      title: '락 경합의 원인을 커밋 시점까지 좁힘',
       description:
-        '이미지 제작을 CS팀이 대신하던 흐름을, 템플릿 데이터 구조를 설계해 병원이 직접 편집하는 방식으로 바꿨습니다.',
-      keywords: ['API Design', 'Self-service'],
+        '트랜잭션을 잘게 나눠도 재발하던 lock wait timeout 을, 원인이 트랜잭션 길이가 아니라 락을 잡는 문장의 커밋 시점임을 확인해 주 2~3회에서 0건으로 없앴습니다. 이후 같은 장애를 실험실에서 재현해 처방별 효과를 측정으로 확인했습니다.',
+      keywords: ['Transaction', 'Troubleshooting', 'MySQL'],
     },
   ],
 };
