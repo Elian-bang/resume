@@ -14,6 +14,9 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const OUT_DIR = path.join(ROOT, 'docs');
 
+// pre-commit 훅은 빌드 결과 없이도 돌아야 하므로 추적 검사만 실행한다.
+const TRACKED_ONLY = process.argv.includes('--tracked-only');
+
 const patterns = [
   { label: '전화번호 형태', re: /01[016789][-.\s]\d{3,4}[-.\s]\d{4}/ },
   { label: 'tel: 링크', re: /tel:\+?\d{7,}/i },
@@ -48,30 +51,70 @@ function walk(dir, files = []) {
   return files;
 }
 
-if (!fs.existsSync(OUT_DIR)) {
-  console.error(`check-public-build: 빌드 결과(${OUT_DIR})가 없다. 먼저 빌드한다.`);
-  process.exit(1);
+if (!TRACKED_ONLY) {
+  if (!fs.existsSync(OUT_DIR)) {
+    console.error(`check-public-build: 빌드 결과(${OUT_DIR})가 없다. 먼저 빌드한다.`);
+    process.exit(1);
+  }
+
+  const hits = [];
+
+  // 얼굴 사진이 공개 빌드에 섞이지 않았는지 본다 (public/ 의 파일은 그대로 복사되므로)
+  for (const name of ['profile.jpg', 'profile.jpeg', 'profile.png']) {
+    if (fs.existsSync(path.join(OUT_DIR, name))) hits.push(`${name} — 사진 파일`);
+  }
+
+  for (const file of walk(OUT_DIR)) {
+    const text = fs.readFileSync(file, 'utf8');
+    for (const { label, re } of patterns) {
+      if (re.test(text)) hits.push(`${path.relative(OUT_DIR, file)} — ${label}`);
+    }
+  }
+
+  if (hits.length > 0) {
+    console.error('check-public-build: 공개 빌드에 연락처로 보이는 값이 있다. 배포하지 않는다.');
+    hits.slice(0, 20).forEach((h) => console.error(`  - ${h}`));
+    if (hits.length > 20) console.error(`  … 외 ${hits.length - 20}건`);
+    process.exit(1);
+  }
+
+  console.log(`check-public-build: 연락처 패턴 없음 (검사 규칙 ${patterns.length}개). 배포 가능.`);
 }
 
-const hits = [];
+// ── git 추적 검사 ────────────────────────────────────────────────
+// 위 검사는 docs/ 만 본다. 그래서 out/ 의 제출본 PDF(전화번호·사진 포함)가
+// 커밋에 섞여 들어간 적이 있다(2026-09-28). 추적 목록 자체를 함께 본다.
+const { execFileSync } = require('child_process');
 
-// 얼굴 사진이 공개 빌드에 섞이지 않았는지 본다 (public/ 의 파일은 그대로 복사되므로)
-for (const name of ['profile.jpg', 'profile.jpeg', 'profile.png']) {
-  if (fs.existsSync(path.join(OUT_DIR, name))) hits.push(`${name} — 사진 파일`);
+const FORBIDDEN = [
+  { re: /^out\//, label: 'out/ — 제출본 PDF(전화번호·사진)' },
+  { re: /(^|\/)profile\.(jpg|jpeg|png)$/i, label: '얼굴 사진' },
+  { re: /\.env\..*local$/, label: '로컬 환경변수(연락처)' },
+];
+
+// -z 로 받는다. 기본 출력은 한글 파일명을 "out/\353\260\251..." 처럼 따옴표로 감싸
+// 이스케이프하기 때문에 경로 정규식이 빗나간다(2026-09-28에 실제로 놓쳤다).
+let tracked = [];
+try {
+  tracked = execFileSync('git', ['ls-files', '-z'], { cwd: ROOT, encoding: 'utf8' })
+    .split('\0')
+    .filter(Boolean);
+} catch {
+  console.warn('check-public-build: git 추적 목록을 읽지 못했다 — 이 검사만 건너뛴다.');
 }
 
-for (const file of walk(OUT_DIR)) {
-  const text = fs.readFileSync(file, 'utf8');
-  for (const { label, re } of patterns) {
-    if (re.test(text)) hits.push(`${path.relative(OUT_DIR, file)} — ${label}`);
+const trackedHits = [];
+for (const file of tracked) {
+  for (const { re, label } of FORBIDDEN) {
+    if (re.test(file)) trackedHits.push(`${file} — ${label}`);
   }
 }
 
-if (hits.length > 0) {
-  console.error('check-public-build: 공개 빌드에 연락처로 보이는 값이 있다. 배포하지 않는다.');
-  hits.slice(0, 20).forEach((h) => console.error(`  - ${h}`));
-  if (hits.length > 20) console.error(`  … 외 ${hits.length - 20}건`);
+if (trackedHits.length > 0) {
+  console.error('check-public-build: 공개 저장소가 추적하면 안 되는 파일이 있다. 커밋하지 않는다.');
+  trackedHits.forEach((h) => console.error(`  - ${h}`));
+  console.error('  조치: git rm --cached <파일> 후 .gitignore 에 추가한다.');
   process.exit(1);
 }
 
-console.log(`check-public-build: 연락처 패턴 없음 (검사 규칙 ${patterns.length}개). 배포 가능.`);
+console.log(`check-public-build: 추적 목록에 연락처 산출물 없음 (검사 ${tracked.length}개 파일).`);

@@ -1,0 +1,4 @@
+#!/bin/sh
+# 공개 저장소에 연락처·사진·제출본 PDF 가 섞이는 것을 커밋 단계에서 막는다.
+# 설치: git config core.hooksPath .githooks
+node scripts/check-public-build.js --tracked-only || exit 1
