@@ -54,6 +54,12 @@ if (!fs.existsSync(OUT_DIR)) {
 }
 
 const hits = [];
+
+// 얼굴 사진이 공개 빌드에 섞이지 않았는지 본다 (public/ 의 파일은 그대로 복사되므로)
+for (const name of ['profile.jpg', 'profile.jpeg', 'profile.png']) {
+  if (fs.existsSync(path.join(OUT_DIR, name))) hits.push(`${name} — 사진 파일`);
+}
+
 for (const file of walk(OUT_DIR)) {
   const text = fs.readFileSync(file, 'utf8');
   for (const { label, re } of patterns) {
