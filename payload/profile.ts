@@ -67,7 +67,7 @@ const profile: ProfilePayload = {
     },
   ],
   notice: emailNotice,
-  tagline: '서비스 개발부터 성능 개선과 안정적인 운영까지 담당하는 백엔드 개발자',
+  tagline: '서비스 개발부터 성능 개선과 안정적인 운영까지 담당하는 풀스택 개발자',
 };
 
 export default profile;
