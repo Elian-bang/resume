@@ -39,6 +39,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      # 이 저장소는 공개이고, 아래 deploy 잡이 docs/ 를 그대로 gh-pages 에 올린다.
+      # 로컬 `build:public` 에는 이 검사가 붙어 있지만 실제 배포 경로는 여기다.
+      # 전화번호·사진이 빌드 결과나 추적 목록에 섞이면 배포를 막는다.
+      - name: Verify public build (no contact info)
+        run: node scripts/check-public-build.js
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
