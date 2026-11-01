@@ -19,7 +19,7 @@ const skill: SkillPayload = {
     },
     {
       category: 'Database & Messaging',
-      items: [{ title: 'MySQL' }, { title: 'RabbitMQ' }],
+      items: [{ title: 'MySQL' }, { title: 'Redis' }, { title: 'RabbitMQ' }],
     },
     {
       category: 'Infrastructure & Ops',
@@ -28,6 +28,7 @@ const skill: SkillPayload = {
         { title: 'Kubernetes' },
         { title: 'GitHub Actions' },
         { title: 'Spring Boot Actuator' },
+        { title: 'Elastic APM' },
         { title: 'Git' },
       ],
     },

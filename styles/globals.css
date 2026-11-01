@@ -989,6 +989,10 @@ a:focus-visible {
   section {
     break-before: auto;
   }
+  /* 페이지 끝에 섹션 제목·요약만 남지 않게 경력과 기술 목록은 새 쪽에서 시작한다. */
+  section[aria-labelledby='section-experience'] {
+    break-before: page;
+  }
 
   /* 10. A4 레이아웃 */
   @page {
